@@ -1,0 +1,32 @@
+pip install pandas
+
+import pandas as pd
+
+df = pd.read_csv(r"C:\Users\Shashank\OneDrive\Desktop\testjupyter\StudentsPerformance.csv")
+
+print(df)
+
+df.head(15)
+
+df.isnull().sum()
+
+print(df.describe())
+
+df.dtypes
+
+df.dropna(axis=1)
+
+y = df.iloc[:, 0:1]
+print(y)
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+y = le.fit_transform(y)
+print(y)
+
+print(df['race/ethnicity'].value_counts())
+
+df_Lunch = pd.get_dummies(df['lunch'])
+df_new = pd.concat([df, df_Lunch], axis=1)
+print(df_new)
+
